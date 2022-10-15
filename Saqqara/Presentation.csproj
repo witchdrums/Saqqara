@@ -68,8 +68,14 @@
     <Compile Include="UserControl_ArticulosPublicados.xaml.cs">
       <DependentUpon>UserControl_ArticulosPublicados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_ArticulosRechazados.xaml.cs">
+      <DependentUpon>UserControl_ArticulosRechazados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_EvaluacionDeArticulos.xaml.cs">
       <DependentUpon>UserControl_EvaluacionDeArticulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_LiberacionDeArticulo.xaml.cs">
+      <DependentUpon>UserControl_LiberacionDeArticulo.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -87,7 +93,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControl_ArticulosRechazados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl_EvaluacionDeArticulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_LiberacionDeArticulo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,6 +125,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BusinessLayer.Autores.datasource" />
+    <None Include="Properties\DataSources\BusinessLayer.Estados.datasource" />
+    <None Include="Properties\DataSources\BusinessLayer.Libros.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

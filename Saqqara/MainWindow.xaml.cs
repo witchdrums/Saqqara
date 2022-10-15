@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Saqqara;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -46,6 +47,14 @@ namespace BibliotecaUniversidadDeSaqqara
                     break;
                 case "ListViewItem_EvaluacionDeArticulos":
                     selectedUserControl = new UserControlEvaluacionDeArticulos();
+                    MainGrid.Children.Add(selectedUserControl);
+                    break;
+                case "ListViewItem_ArticulosRechazados":
+                    selectedUserControl = new UserControlArticulosRechazados();
+                    MainGrid.Children.Add(selectedUserControl);
+                    break;
+                case "ListViewItem_LiberacionDeArticulo":
+                    selectedUserControl = new UserControl_LiberacionDeArticulo();
                     MainGrid.Children.Add(selectedUserControl);
                     break;
             }

@@ -14,8 +14,8 @@
         <ListView Grid.Column="0" SelectionChanged="ListView_SelectionChanged" MaxWidth="300">
             <ListViewItem x:Name="ListViewItem_ArticulosPublicados"  Content="Artículos publicados" FontSize="20" Height="60" />
             <ListViewItem x:Name="ListViewItem_EvaluacionDeArticulos" Content="Evaluación de artículos" FontSize="20" Height="60" />
-            <ListViewItem Content="Liberación de artículo" FontSize="20" Height="60" />
-            <ListViewItem Content="Artículos rechazados" FontSize="20" Height="60" />
+            <ListViewItem x:Name="ListViewItem_LiberacionDeArticulo" Content="Liberación de artículo" FontSize="20" Height="60" />
+            <ListViewItem x:Name="ListViewItem_ArticulosRechazados" Content="Artículos rechazados" FontSize="20" Height="60" />
         </ListView>
         <Grid x:Name="MainGrid" Grid.Column="1"/>
     </Grid>

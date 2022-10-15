@@ -1,0 +1,25 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaUniversidadDeSaqqara"
+             xmlns:BusinessLayer="clr-namespace:BusinessLayer;assembly=BusinessLayer" x:Class="BibliotecaUniversidadDeSaqqara.UserControlArticulosRechazados"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="librosViewSource" d:DesignSource="{d:DesignInstance {x:Type BusinessLayer:Libros}}"/>
+    </UserControl.Resources>
+    <Grid Background="LightGray" DataContext="{StaticResource librosViewSource}">
+
+        <DataGrid x:Name="librosDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="tituloColumn" Binding="{Binding Titulo}" Header="Titulo" />
+                <DataGridTextColumn x:Name="nombresAutoresColumn" Binding="{Binding NombresAutores}" Header="Autor(es)" IsReadOnly="True" />
+                <DataGridTextColumn x:Name="nombreEstadoColumn" Binding="{Binding NombreEstado}" Header="Estado" IsReadOnly="True" />
+                <DataGridTextColumn x:Name="fechaDeRechazoColumn" Binding="{Binding FechaDeRecepcion}" Header="Fecha de recepcion" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>
