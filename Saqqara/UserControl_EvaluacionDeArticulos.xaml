@@ -1,0 +1,139 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaUniversidadDeSaqqara"
+             xmlns:BusinessLayer="clr-namespace:BusinessLayer;assembly=BusinessLayer" x:Class="BibliotecaUniversidadDeSaqqara.UserControlEvaluacionDeArticulos"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="librosViewSource" d:DesignSource="{d:DesignInstance {x:Type BusinessLayer:Libros}}"/>
+    </UserControl.Resources>
+    <Grid Background="White" DataContext="{StaticResource librosViewSource}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" MaxHeight="30">
+            <TextBlock Text="Articulos tecnico-cientifico" Padding="27,0" />
+        </Viewbox>
+
+
+
+        <Grid Grid.Row="2" Margin ="50,10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Evaluacion de articulo" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" x:Name="TextBlock_Titulo"  Text="asdf"/>
+            <TextBlock Grid.Row="2" x:Name="TextBlock_Datos"  Text="asdf"/>
+            <TextBlock Grid.Row="3" Text="Concepto de evaluacion (obligatorio):" FontWeight="Bold"/>
+            <Grid Grid.Row="4" MinHeight="150">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Considera que el trabajo tiene la calidad para ser aceptado?" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Margin="20,0"/>
+                        <StackPanel Grid.Row ="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <RadioButton x:Name="RadioButton_Si" Content="Si" Padding="20,0"/>
+                            <RadioButton x:Name="RadioButton_No" Content="No" Padding="20,0"/>
+                        </StackPanel>
+                        <Button Grid.Row="2" Margin="20" Content="Aceptar" MinHeight="20" Click="Button_Click"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="1. Estructura general" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="2. Introduccion (problematica y objetivo)" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="3. Congruencia metodologica" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="4. Resultados" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="5. Literatura citada" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="Total" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                        <DockPanel Grid.Column="2" Grid.Row="0" VerticalAlignment="Center"  >
+                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                <TextBox Text="{Binding Value, ElementName=Slider_EstructuraGeneral, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" VerticalContentAlignment="Center"/>
+                                <Label Content="/10" />
+                            </StackPanel>
+                            <Slider x:Name="Slider_EstructuraGeneral" Maximum="10" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" >
+                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                <TextBox Text="{Binding Value, ElementName=Slider_Introduccion, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" VerticalContentAlignment="Center"/>
+                                <Label Content="/20" />
+                            </StackPanel>
+                            <Slider x:Name="Slider_Introduccion" Maximum="20" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" >
+                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                <TextBox Text="{Binding Value, ElementName=Slider_CongruenciaMetodologica, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" VerticalContentAlignment="Center"/>
+                                <Label Content="/40" />
+                            </StackPanel>
+                            <Slider x:Name="Slider_CongruenciaMetodologica" Maximum="40" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" >
+                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                <TextBox Text="{Binding Value, ElementName=Slider_Resultados, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" VerticalContentAlignment="Center"/>
+                                <Label Content="/20" />
+                            </StackPanel>
+                            <Slider x:Name="Slider_Resultados" Maximum="20" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" >
+                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                <TextBox Text="{Binding Value, ElementName=Slider_LiteraturaCitada, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" VerticalContentAlignment="Center"/>
+                                <Label Content="/10" />
+                            </StackPanel>
+                            <Slider x:Name="Slider_LiteraturaCitada" Maximum="10" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged" />
+                        </DockPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="5" DockPanel.Dock="Right" Orientation="Horizontal">
+                            <Label x:Name="Label_CalificacionTotal" Content="0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="40" VerticalContentAlignment="Center" />
+                            <Label Content="/100" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+        <DataGrid x:Name="librosDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected"  Grid.Row="1" Grid.RowSpan="1" SelectionChanged="librosDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="tituloColumn" Binding="{Binding Titulo}" Header="Titulo" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="nombresAutoresColumn" Binding="{Binding NombresAutores}" Header="Autor(es)" IsReadOnly="True" />
+                <DataGridTextColumn x:Name="fechaDeRecepcionColumn" Binding="{Binding FechaDeRecepcion}" Header="Fecha de recepcion" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="nombreEstadoColumn" Binding="{Binding NombreEstado}" Header="Estado" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="calificacionTotalColumn" Binding="{Binding CalificacionTotal}" Header="Calificacion" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="aprobadoColumn" Binding="{Binding Aprobado}" Header="Aprobado" IsReadOnly="True"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
