@@ -85,5 +85,24 @@ namespace BusinessLayer.BusinessServices
                 return confirmacion;
             }
         }
+
+        public bool UpdateIdEstadoOfLibroByIdLibro(int idLibro, int idEstado)
+        {
+            bool confirmacion = false;
+            using (var context = new SaqqaraContext())
+            {
+                var query =
+                    from libro in context.Libros
+                    where libro.IdLibro == idLibro
+                    select libro;
+
+                foreach (Libros libro in query)
+                {
+                    libro.IdEstado = idEstado;
+                }
+                confirmacion = context.SaveChanges() > 0;
+                return confirmacion;
+            }
+        }
     }
 }
